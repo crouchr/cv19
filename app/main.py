@@ -79,18 +79,3 @@ if __name__ == '__main__':
     main()
 
 
-
-    # wales_endpoint = (
-    #     'https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=nation;areaName=wales&structure={"date":"date", "areaName":"areaName", "areaCode":"areaCode", "newCasesByPublishDate":"newCasesByPublishDate", "cumCasesByPublishDate":"cumCasesByPublishDate", "newDeathsByDeathDate":"newDeathsByDeathDate", "cumDeathsByDeathDate":"cumDeathsByDeathDate"}'
-    # )
-    #
-    # scotland_endpoint = (
-    #     'https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=nation;areaName=scotland&structure={"date":"date", "areaName":"areaName", "areaCode":"areaCode", "newCasesByPublishDate":"newCasesByPublishDate", "cumCasesByPublishDate":"cumCasesByPublishDate", "newDeathsByDeathDate":"newDeathsByDeathDate", "cumDeathsByDeathDate":"cumDeathsByDeathDate"}'
-    # )
-    # new_cases = get_data(new_cases_endpoint)
-
-
-
-    # pprint(new_cases)
-    # pprint(data)
-
