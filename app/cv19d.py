@@ -23,6 +23,7 @@ def get_data(url):
         print(e.__str__())
         return None
 
+
 def main():
     england_endpoint = (
         'https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=nation;areaName=england&structure={"date":"date", "areaName":"areaName", "areaCode":"areaCode", "newCasesByPublishDate":"newCasesByPublishDate", "cumCasesByPublishDate":"cumCasesByPublishDate", "newDeathsByDeathDate":"newDeathsByDeathDate", "cumDeathsByDeathDate":"cumDeathsByDeathDate"}'
@@ -33,7 +34,7 @@ def main():
     poll_secs = get_env_app.get_poll_secs()
     telegraf_endpoint_host = get_env.get_telegraf_endpoint()  # can be read from ENV
 
-    print('covid19d started, version=' + version)
+    print('cv19d started, version=' + version)
     print('stage=' + get_env.get_stage())
     if stage == 'DEV':
         verbose = True
@@ -44,7 +45,7 @@ def main():
     while True:
         try:
             print('waiting to sync main loop...')
-            sync_start_time.wait_until_minute_flip(10)
+            sync_start_time.wait_until_minute_flip(30)
             start_secs = time.time()
             data = get_data(england_endpoint)
 
@@ -60,12 +61,13 @@ def main():
                 'newCases': yesterdays_data['newCasesByPublishDate']
             }
 
+            print(time.ctime())
             pprint(metrics)
 
             send_metrics_to_telegraf.send_metrics(telegraf_endpoint_host, metrics, verbose)
 
             stop_secs = time.time()
-            mins_between_updates = 1
+            mins_between_updates = 30
             sleep_secs = (mins_between_updates * 60) - (stop_secs - start_secs) - 10
             time.sleep(sleep_secs)
 
