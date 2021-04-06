@@ -51,6 +51,7 @@ def main():
 
             if data is None:
                 time.sleep(180)
+                continue    # go to start of loop
 
             yesterdays_data = data['data'][1]
             # pprint(yesterdays_data)
