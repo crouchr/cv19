@@ -12,7 +12,7 @@ import sync_start_time
 
 def get_data(url):
     try:
-        response = get(url, timeout=10)
+        response = get(url, timeout=30)
 
         # if response.status_code >= 400:
         #     raise RuntimeError(f'Request failed: { response.text }')
@@ -45,7 +45,7 @@ def main():
     while True:
         try:
             print('waiting to sync main loop...')
-            sync_start_time.wait_until_minute_flip(30)
+            sync_start_time.wait_until_minute_flip(30)      # every 30 minutes
             start_secs = time.time()
             data = get_data(england_endpoint)
 
