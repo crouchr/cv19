@@ -6,7 +6,7 @@ import send_metrics_to_telegraf
 import get_env
 import get_env_app
 
-# artifacts (metfuncs)
+# artifacts (metminifuncs)
 import sync_start_time
 
 
@@ -74,6 +74,7 @@ def main():
         except Exception as e:
             print('Error : ' + e.__str__())
             traceback.print_exc()
+            time.sleep(60)
             continue
 
 

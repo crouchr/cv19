@@ -10,9 +10,10 @@ name = "ermin"
 
 [packages]
 requests = "==2.25.1"
-metminifuncs = {version="1.0.5", index="ermin"}
+metminifuncs = {version="1.0.6", index="ermin"}
 
 [dev-packages]
 
 [requires]
 python_version = "3.7"
+
