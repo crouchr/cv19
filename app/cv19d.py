@@ -44,8 +44,8 @@ def main():
 
     while True:
         try:
-            # print('waiting to sync main loop...')
-            # sync_start_time.wait_until_minute_flip(30)      # every 30 minutes
+            print('waiting to sync main loop...')
+            sync_start_time.wait_until_minute_flip(30)      # every 30 minutes
             start_secs = time.time()
             data = get_data(england_endpoint)
 
