@@ -44,8 +44,8 @@ def main():
 
     while True:
         try:
-            print('waiting to sync main loop...')
-            sync_start_time.wait_until_minute_flip(30)      # every 30 minutes
+            # print('waiting to sync main loop...')
+            # sync_start_time.wait_until_minute_flip(30)      # every 30 minutes
             start_secs = time.time()
             data = get_data(england_endpoint)
 
@@ -55,11 +55,21 @@ def main():
 
             yesterdays_data = data['data'][1]
             # pprint(yesterdays_data)
+            if yesterdays_data['newDeathsByDeathDate'] == None:
+                newDeathsByDeathDate = 0
+            else:
+                newDeathsByDeathDate = yesterdays_data['newDeathsByDeathDate']
+
+            if yesterdays_data['newCasesByPublishDate'] == None:
+                newCasesByPublishDate = 0
+            else:
+                newCasesByPublishDate = yesterdays_data['newCasesByPublishDate']
+
 
             metrics = {
                 'metric_name': 'covid19',
-                'newDeaths': yesterdays_data['newDeathsByDeathDate'],
-                'newCases': yesterdays_data['newCasesByPublishDate']
+                'newDeaths': newDeathsByDeathDate,
+                'newCases': newCasesByPublishDate
             }
 
             print(time.ctime())
